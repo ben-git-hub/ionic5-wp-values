@@ -8,45 +8,75 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'quotes',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('../quotes/quotes.module').then(m => m.QuotesPageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'quotes/edit-quote',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../edit-quote/edit-quote.module').then(m => m.EditQuotePageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'quotes/:id/edit',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../edit-quote/edit-quote.module').then(m => m.EditQuotePageModule)
+          }
+        ]
+      },
+      {
+        path: 'quotes/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../quote-details/quote-details.module').then(m => m.QuoteDetailsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'about',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../about/about.module').then(m => m.AboutPageModule)
+          }
+        ]
+      },
+      {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../profile/profile.module').then(m => m.ProfilePageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/quotes',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/quotes',
     pathMatch: 'full'
   }
 ];
